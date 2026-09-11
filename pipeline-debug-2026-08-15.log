@@ -1,0 +1,37 @@
+[2025-01-17 09:23:41] DEBUG pipeline-runner starting
+[2025-01-17 09:23:41] DEBUG loading environment config from .env.pipeline
+[2025-01-17 09:23:42] DEBUG boto3 session init: region=us-east-1, profile=default
+[2025-01-17 09:23:42] DEBUG resolved credentials:
+[2025-01-17 09:23:42] DEBUG   AWS_ACCESS_KEY_ID=AKIAIOSFODNN7EXAMPLE
+[2025-01-17 09:23:42] DEBUG   AWS_SECRET_ACCESS_KEY=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+[2025-01-17 09:23:42] DEBUG   AWS_DEFAULT_REGION=us-east-1
+[2025-01-17 09:23:43] DEBUG s3 client created — bucket=infra-deploy-artifacts-prod
+[2025-01-17 09:23:43] INFO  checking s3://infra-deploy-artifacts-prod/releases/ for latest build...
+[2025-01-17 09:23:44] ERROR S3 HeadBucket failed: An error occurred (403) when calling the HeadBucket operation: Forbidden
+[2025-01-17 09:23:44] DEBUG full boto3 response:
+{
+  "Error": {
+    "Code": "403",
+    "Message": "Forbidden"
+  },
+  "ResponseMetadata": {
+    "RequestId": "4K8F2N1P9Q7R3S5T",
+    "HTTPStatusCode": 403,
+    "HTTPHeaders": {
+      "x-amz-request-id": "4K8F2N1P9Q7R3S5T",
+      "content-type": "application/xml",
+      "server": "AmazonS3"
+    },
+    "RetryAttempts": 1
+  }
+}
+[2025-01-17 09:23:44] DEBUG retrying with explicit credential object to isolate IAM issue...
+[2025-01-17 09:23:45] ERROR retry also failed — dumping full credential chain for review
+[2025-01-17 09:23:45] DEBUG credential chain dump:
+  source: environment
+  access_key: AKIAIOSFODNN7EXAMPLE
+  secret_key: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+  token: None
+  method: explicit
+[2025-01-17 09:23:45] WARN  verbose credential logging enabled — disable LOG_LEVEL=DEBUG before committing
+[2025-01-17 09:23:46] INFO  pipeline-runner exiting with code 1
